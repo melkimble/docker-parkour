@@ -1,0 +1,32 @@
+parkour:
+    restart: always
+    build: ./parkour/
+    expose:
+        - "8000"
+    links:
+        - postgres:postgres
+    volumes:
+        - /usr/src/app
+        - /usr/src/app/static
+    env_file: .env
+    command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
+
+nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+        - "80:80"
+    volumes:
+        - /www/static
+    volumes_from:
+        - parkour
+    links:
+        - parkour:parkour
+
+postgres:
+    restart: always
+    image: postgres:latest
+    ports:
+        - "5432:5432"
+    volumes:
+        - pgdata:/var/lib/postgresql/data/
