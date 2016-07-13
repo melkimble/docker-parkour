@@ -2,10 +2,9 @@ FROM ubuntu:14.04
 
 MAINTAINER Devon P. Ryan, dpryan79@gmail.com
 
-RUN apt-get python3 pip && \
-    git clone git@github.com:maxplanck-ie/parkour.git && \
+RUN git clone https://github.com/maxplanck-ie/parkour-docker.git && \
     cd /parkour && \
-    pip install -r requirements.txt && \
+    pip3 install -r requirements.txt && \
     python3 manage.py runserver
 
 EXPOSE :80
