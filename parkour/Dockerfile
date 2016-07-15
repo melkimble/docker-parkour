@@ -2,8 +2,6 @@ FROM python:3.5
 
 MAINTAINER Devon P. Ryan, dpryan79@gmail.com
 
-RUN apt-get update && apt-get -y install nano
-
 RUN git clone https://github.com/maxplanck-ie/parkour.git
 
 RUN mkdir -p /usr/src/app && \
