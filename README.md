@@ -18,14 +18,21 @@ docker-compose build
 docker-compose up -d
 ```
 
-4) Migrate database
+4) Collect all necessary fles
+```
+docker-compose run parkour python manage.py collectstatic --noinput
+```
+
+5) Migrate database
 ```
 docker-compose run parkour python manage.py migrate
 ```
 
-5) Create superuser (admin)
+6) Create superuser (admin)
 ```
 docker-compose run parkour python manage.py createsuperuser
 ```
 
-6) Lauch Parkour at ```http://localhost/```
+7) Lauch Parkour at ```http://localhost/```
+
+8) Manage Parkour at ```http://localhost/admin/```
