@@ -4,7 +4,7 @@ A Docker container for Parkour
 ## How to run Parkour
 1) Create Docker host
 ```
-docker-machine create -d virtualbox dev;
+docker-machine create -d virtualbox dev
 ```
 
 2) Point Docker with *dev* machine
