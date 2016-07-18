@@ -7,7 +7,7 @@ A Docker container for Parkour
 docker-machine create -d virtualbox dev
 ```
 
-2) Point Docker with *dev* machine
+2) Point Docker to *dev* machine
 ```
 eval $(docker-machine env dev)
 ```
@@ -33,6 +33,6 @@ docker-compose run parkour python manage.py migrate
 docker-compose run parkour python manage.py createsuperuser
 ```
 
-7) Lauch Parkour at ```http://localhost/```
+7) Lauch Parkour ```http://localhost/```
 
-8) Manage Parkour at ```http://localhost/admin/```
+8) Manage Parkour ```http://localhost/admin/```
