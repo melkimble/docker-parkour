@@ -6,11 +6,10 @@ RUN git clone https://github.com/maxplanck-ie/parkour.git
 
 RUN mkdir -p /usr/src/app && \
     cp -a parkour/. /usr/src/app && \
+    mkdir /usr/src/app/logs && \
     rm -rf parkour/
 
 WORKDIR /usr/src/app
-
-RUN mkdir logs
 
 ENV TERM=xterm
 
