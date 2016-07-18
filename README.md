@@ -1,5 +1,4 @@
-# parkour-docker
-A Docker container for Parkour
+Docker container for Parkour
 
 ## How to run Parkour
 1) Create Docker host
