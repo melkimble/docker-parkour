@@ -1,36 +1,40 @@
 Docker container for Parkour
 
 ## How to run Parkour
-1) Create Docker host
-```
-docker-machine create -d virtualbox dev
-```
 
-2) Point Docker to *dev* machine
-```
-eval $(docker-machine env dev)
-```
-
-3) Build the images and start the services
+1) Build the images and start the services
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-4) Collect all necessary fles
+2) Enter the container
 ```
-docker-compose run parkour python manage.py collectstatic --noinput
-```
-
-5) Migrate database
-```
-docker-compose run parkour python manage.py migrate
+docker exec -it parkourdocker_parkour_1 /bin/bash
 ```
 
-6) Create superuser (admin)
+3) Collect all necessary fles
 ```
-docker-compose run parkour python manage.py createsuperuser
+python manage.py collectstatic --noinput
 ```
+
+4) Migrate database
+```
+python manage.py migrate
+```
+
+5) Create superuser (admin)
+```
+python manage.py createsuperuser
+```
+
+6) Exit the container and restart it
+```
+exit
+docker restart parkourdocker_parkour_1
+```
+
+---
 
 7) Lauch Parkour ```http://localhost/```
 
