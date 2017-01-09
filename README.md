@@ -10,7 +10,7 @@ docker-compose up -d
 
 2) Enter the container
 ```
-docker exec -it parkourdocker_parkour_1 /bin/bash
+docker exec -it dockerparkour_parkour_1 /bin/bash
 ```
 
 3) Collect all necessary fles
@@ -31,7 +31,7 @@ python manage.py createsuperuser
 6) Exit the container and restart it
 ```
 exit
-docker restart parkourdocker_parkour_1
+docker restart dockerparkour_parkour_1
 ```
 
 ---
