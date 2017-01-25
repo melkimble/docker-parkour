@@ -2,7 +2,11 @@ FROM python:3.5
 
 MAINTAINER Devon P. Ryan, dpryan79@gmail.com
 
-RUN mkdir -p /usr/src/app/logs
+RUN git clone https://github.com/maxplanck-ie/parkour.git
+ 
+RUN mkdir -p /usr/src/app/logs && \
+    cp -a parkour/. /usr/src/app && \
+    rm -rf parkour/
 
 WORKDIR /usr/src/app
 
