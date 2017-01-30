@@ -2,11 +2,7 @@ FROM python:3.5
 
 MAINTAINER Devon P. Ryan, dpryan79@gmail.com
 
-#RUN git clone https://github.com/maxplanck-ie/parkour.git
- 
-#RUN mkdir -p /usr/src/app && \
-#    cp -a parkour/. /usr/src/app && \
-#    rm -rf parkour/
+RUN apt-get update && apt-get install -y wkhtmltopdf
 
 RUN mkdir -p /usr/src/app
 
