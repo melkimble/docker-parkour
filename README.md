@@ -33,27 +33,27 @@ docker-compose up -d
 
 ### Step 2
 
-Enter the container
+Enter the container:
 ```
 docker exec -it dockerparkour_parkour_1 /bin/bash
 ```
 
-Collect all static fles
+Collect all static fles:
 ```
 python manage.py collectstatic --noinput
 ```
 
-Migrate the database
+Migrate the database:
 ```
 python manage.py migrate
 ```
 
-Create superuser (admin)
+Create superuser (admin):
 ```
 python manage.py createsuperuser
 ```
 
-Exit the container and restart it
+Exit the container and restart it:
 ```
 exit
 docker restart dockerparkour_parkour_1
