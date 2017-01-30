@@ -1,3 +1,7 @@
+# Parkour Docker Image
+
+Docker container for easy deployment of the [Parkour](https://github.com/maxplanck-ie/parkour).
+
 ## Installed tools
 
 * [Parkour](https://github.com/maxplanck-ie/parkour)
@@ -10,7 +14,7 @@
 
 ### Step 0
 
-Install [Docker](https://docs.docker.com/engine/installation/).
+Install [Docker](https://docs.docker.com/engine/installation/)
 
 ### Step 1
 
