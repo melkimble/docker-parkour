@@ -1,34 +1,55 @@
-Docker container for Parkour
+## Installed tools
 
-## How to run Parkour
+* [Parkour](https://github.com/maxplanck-ie/parkour)
 
-1) Build the images and start the services
+## Requirements
+
+* [Docker](https://docs.docker.com/engine/installation/) for Linux/macOS/Windows
+
+## Installation
+
+### Step 0
+
+Install [Docker](https://docs.docker.com/engine/installation/).
+
+### Step 1
+
+Clone this repository:
+```
+git clone https://github.com/maxplanck-ie/docker-parkour.git
+cd docker-parkour
+```
+
+Build the images and start the services:
+
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-2) Enter the container
+### Step 2
+
+Enter the container
 ```
 docker exec -it dockerparkour_parkour_1 /bin/bash
 ```
 
-3) Collect all necessary fles
+Collect all static fles
 ```
 python manage.py collectstatic --noinput
 ```
 
-4) Migrate database
+Migrate the database
 ```
 python manage.py migrate
 ```
 
-5) Create superuser (admin)
+Create superuser (admin)
 ```
 python manage.py createsuperuser
 ```
 
-6) Exit the container and restart it
+Exit the container and restart it
 ```
 exit
 docker restart dockerparkour_parkour_1
@@ -36,6 +57,14 @@ docker restart dockerparkour_parkour_1
 
 ---
 
-7) Lauch Parkour ```http://localhost/```
+## Usage
 
-8) Manage Parkour ```http://localhost/admin/```
+Open Parkour: ```http://localhost/```
+
+Manage Parkour (admin site): ```http://localhost/admin/```
+
+Direct management:
+```
+docker exec -it dockerparkour_parkour_1 /bin/bash
+python manage.py --help
+```
