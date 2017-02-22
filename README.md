@@ -40,17 +40,17 @@ docker exec -it dockerparkour_parkour_1 /bin/bash
 
 Collect all static fles:
 ```
-python manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput
 ```
 
 Migrate the database:
 ```
-python manage.py migrate
+python3 manage.py migrate
 ```
 
 Create superuser (admin):
 ```
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
 
 Exit the container and restart it:
@@ -70,5 +70,5 @@ Manage Parkour (admin site): ```http://localhost/admin/```
 Direct management:
 ```
 docker exec -it dockerparkour_parkour_1 /bin/bash
-python manage.py --help
+python3 manage.py --help
 ```
