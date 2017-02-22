@@ -1,8 +1,8 @@
-FROM python:3.5
+FROM ubuntu:16.04
 
 MAINTAINER Devon P. Ryan, dpryan79@gmail.com
 
-RUN apt-get update && apt-get install -y language-pack-en openssl build-essential xorg libssl-dev git nano
+RUN apt-get update && apt-get install -y language-pack-en openssl build-essential xorg libssl-dev git nano python3-pip
 
 # Install wkhtmltox (for generating PDF files)
 RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
@@ -21,4 +21,4 @@ ENV DATABASE_URL "postgres://postgres:postgres@postgres:5432/postgres"
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/maxplanck-ie/parkour.git .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
