@@ -1,31 +1,37 @@
-parkour:
-    restart: always
-    build: ./parkour/
-    expose:
-        - "8000"
-    links:
-        - postgres:postgres
-    volumes:
-        - /usr/src/app
-        - /usr/src/app/static
-    command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
+version: '2'
 
-nginx:
-    restart: always
-    build: ./nginx/
-    ports:
-        - "80:80"
-    volumes:
-        - /www/static
-    volumes_from:
-        - parkour
-    links:
-        - parkour:parkour
+services:
+    web:
+        restart: always
+        build: ./web
+        expose:
+            - '8000'
+        links:
+            - postgres:postgres
+        volumes:
+            - /usr/src/app
+            - /usr/src/app/static
+        command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
 
-postgres:
-    restart: always
-    image: postgres:9.5
-    ports:
-        - "5432:5432"
-    volumes:
-        - pgdata:/var/lib/postgresql/data/
+    nginx:
+        restart: always
+        build: ./nginx
+        ports:
+            - '80:80'
+        volumes:
+            - /www/static
+        volumes_from:
+            - web
+        links:
+            - web:web
+
+    postgres:
+        restart: always
+        image: postgres:9.5
+        ports:
+            - '5432:5432'
+        volumes:
+            - pgdata:/var/lib/postgresql/data/
+
+volumes:
+    pgdata:

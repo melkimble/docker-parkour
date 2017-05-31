@@ -35,10 +35,10 @@ docker-compose up -d
 
 Enter the container:
 ```
-docker exec -it dockerparkour_parkour_1 /bin/bash
+docker exec -it dockerparkour_web_1 /bin/bash
 ```
 
-Collect all static fles:
+Collect all static files:
 ```
 python3 manage.py collectstatic --noinput
 ```
@@ -56,7 +56,7 @@ python3 manage.py createsuperuser
 Exit the container and restart it:
 ```
 exit
-docker restart dockerparkour_parkour_1
+docker-compose restart web
 ```
 
 ---

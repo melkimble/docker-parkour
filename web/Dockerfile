@@ -12,8 +12,8 @@ ENV LC_LANG en_US.UTF-8
 # Install wkhtmltox (for generating PDF files)
 COPY ./keyboard /etc/default/keyboard
 RUN apt-get install -y openssl build-essential xorg libssl-dev wget
-RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
-    tar -xJf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
+RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
+    tar -xJf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
     cd wkhtmltox && \
     chown root:root bin/wkhtmltopdf && \
     cp -r * /usr/
