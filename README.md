@@ -2,19 +2,7 @@
 
 Docker container for easy deployment of the [Parkour](https://github.com/maxplanck-ie/parkour).
 
-## Installed tools
-
-* [Parkour](https://github.com/maxplanck-ie/parkour)
-
-## Requirements
-
-* [Docker](https://docs.docker.com/engine/installation/) for Linux/macOS/Windows
-
 ## Installation
-
-### Step 0
-
-Install [Docker](https://docs.docker.com/engine/installation/)
 
 ### Step 1
 
@@ -48,7 +36,7 @@ Migrate the database:
 python3 manage.py migrate
 ```
 
-Create superuser (admin):
+Create a superuser (admin):
 ```
 python3 manage.py createsuperuser
 ```
@@ -66,9 +54,3 @@ docker-compose restart web
 Open Parkour: ```http://localhost/```
 
 Manage Parkour (admin site): ```http://localhost/admin/```
-
-Direct management:
-```
-docker exec -it dockerparkour_parkour_1 /bin/bash
-python3 manage.py --help
-```
