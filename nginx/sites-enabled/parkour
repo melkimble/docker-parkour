@@ -2,6 +2,7 @@ server {
     listen 80;
     server_name web;
     charset utf-8;
+    client_max_body_size 100m;
 
     location /static {
         alias /usr/src/app/staticfiles;

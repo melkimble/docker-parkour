@@ -3,23 +3,23 @@ version: '2'
 services:
     web:
         restart: always
+        image: dockerparkour_web:latest
         build: ./web
         expose:
             - '8000'
         links:
             - postgres:postgres
         volumes:
-            - /usr/src/app
-            - /usr/src/app/static
+            - usr_src_app_media:/usr/src/app/media
+            - usr_src_app_staticfiles:/usr/src/app/staticfiles
         command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
 
     nginx:
         restart: always
+        image: dockerparkour_nginx:latest
         build: ./nginx
         ports:
             - '80:80'
-        volumes:
-            - /www/static
         volumes_from:
             - web
         links:
@@ -35,3 +35,5 @@ services:
 
 volumes:
     pgdata:
+    usr_src_app_media:
+    usr_src_app_staticfiles:

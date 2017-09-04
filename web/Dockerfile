@@ -21,12 +21,9 @@ RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-ge
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/maxplanck-ie/parkour.git .
-
-#temp
-RUN apt-get -y install libpq-dev
-
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements/prod.txt
 
 # Django
+ENV DJANGO_SETTINGS_MODULE "wui.settings.prod"
 ENV SECRET_KEY "5(15ds+i2+%ik6z&!yer+ga9m=e%jcqiz_5wszg)r-z!2--b2d"
 ENV DATABASE_URL "postgres://postgres:postgres@postgres:5432/postgres"

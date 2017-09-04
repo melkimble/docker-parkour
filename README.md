@@ -54,3 +54,29 @@ docker-compose restart web
 Open Parkour: ```http://localhost/```
 
 Manage Parkour (admin site): ```http://localhost/admin/```
+
+---
+
+Enter the container:
+
+```
+docker exec -it dockerparkour_web_1 /bin/bash
+```
+
+Run a command inside of the container:
+
+```
+docker exec -d dockerparkour_web_1 <command>
+```
+
+See the app logs:
+
+```
+docker exec -t dockerparkour_web_1 cat app.log
+```
+
+or:
+
+```
+docker-compose logs --tail 100 web
+```
