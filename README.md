@@ -15,68 +15,45 @@ cd docker-parkour
 Build the images and start the services:
 
 ```
-docker-compose build
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ### Step 2
 
-Enter the container:
-```
-docker exec -it dockerparkour_web_1 /bin/bash
-```
-
-Collect all static files:
-```
-python3 manage.py collectstatic --noinput
-```
-
 Migrate the database:
 ```
-python3 manage.py migrate
+docker-compose run parkour-web python manage.py migrate
 ```
 
 Create a superuser (admin):
 ```
-python3 manage.py createsuperuser
-```
-
-Exit the container and restart it:
-```
-exit
-docker-compose restart web
+docker-compose run parkour-web python manage.py createsuperuser
 ```
 
 ---
 
 ## Usage
 
-Open Parkour: ```http://localhost/```
+Open Parkour: ```http://localhost:8001/```
 
-Manage Parkour (admin site): ```http://localhost/admin/```
+Manage Parkour (admin site): ```http://localhost:8001/admin/```
 
 ---
 
 Enter the container:
 
 ```
-docker exec -it dockerparkour_web_1 /bin/bash
-```
-
-Run a command inside of the container:
-
-```
-docker exec -d dockerparkour_web_1 <command>
+docker-compose exec parkour-web bash
 ```
 
 See the app logs:
 
 ```
-docker exec -t dockerparkour_web_1 cat app.log
+docker exec -t dockerparkour_parkour-web cat app.log
 ```
 
 or:
 
 ```
-docker-compose logs --tail 100 web
+docker-compose logs --tail 100 parkour-web
 ```
