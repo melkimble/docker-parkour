@@ -1,35 +1,43 @@
-version: '2'
+version: '2.1'
 
 services:
-    web:
+    
+    parkour-web:
         restart: always
-        image: dockerparkour_web:latest
+        image: dockerparkour_parkour-web:latest
+        container_name: parkour-web
         build: ./web
         expose:
-            - '8000'
-        links:
-            - postgres:postgres
+            - 8000
+        environment:
+            - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
         volumes:
             - usr_src_app_media:/usr/src/app/media
             - usr_src_app_staticfiles:/usr/src/app/staticfiles
-        command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
+        links:
+            - parkour-postgres:postgres
 
-    nginx:
+    parkour-nginx:
         restart: always
-        image: dockerparkour_nginx:latest
+        image: dockerparkour_parkour-nginx:latest
+        container_name: parkour-nginx
         build: ./nginx
         ports:
-            - '80:80'
+            - 8001:80  # expose ports HOST:CONTAINER
         volumes_from:
-            - web
+            - parkour-web
         links:
-            - web:web
+            - parkour-web
 
-    postgres:
+    parkour-postgres:
         restart: always
         image: postgres:9.5
+        container_name: parkour-postgres
         ports:
-            - '5432:5432'
+            - 5433:5432  # expose ports - HOST:CONTAINER
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
         volumes:
             - pgdata:/var/lib/postgresql/data/
 
