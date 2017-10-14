@@ -1,7 +1,7 @@
 version: '2.1'
 
 services:
-    
+
     parkour-web:
         restart: always
         image: dockerparkour_parkour-web:latest
@@ -16,6 +16,7 @@ services:
             - usr_src_app_staticfiles:/usr/src/app/staticfiles
         links:
             - parkour-postgres:postgres
+        command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
 
     parkour-nginx:
         restart: always
