@@ -24,7 +24,7 @@ services:
         container_name: parkour-nginx
         build: ./nginx
         ports:
-            - 8001:80  # expose ports HOST:CONTAINER
+            - 80:80  # expose ports HOST:CONTAINER
         volumes_from:
             - parkour-web
         links:
