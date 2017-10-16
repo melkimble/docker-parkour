@@ -12,6 +12,12 @@ git clone https://github.com/maxplanck-ie/docker-parkour.git
 cd docker-parkour
 ```
 
+Copy in the server's SSL certificate into `nginx/parkour.pem`:
+
+```
+cp /etc/ssl/certs/parkour/parkour.pem nginx/parkour.pem
+```
+
 Build the images and start the services:
 
 ```

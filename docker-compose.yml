@@ -25,6 +25,7 @@ services:
         build: ./nginx
         ports:
             - 80:80  # expose ports HOST:CONTAINER
+            - 443:443
         volumes_from:
             - parkour-web
         links:

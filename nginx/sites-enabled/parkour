@@ -1,8 +1,12 @@
 server {
     listen 80;
+    listen 443 ssl;
     server_name parkour-web;
     charset utf-8;
     client_max_body_size 100m;
+
+    ssl_certificate /etc/parkour.pem;
+    ssl_certificate_key /etc/parkour.pem;
 
     location /static {
         alias /usr/src/app/staticfiles;
