@@ -7,8 +7,10 @@ services:
         image: dockerparkour_parkour-web:latest
         container_name: parkour-web
         build: ./web
+        ports:
+            - 8888:8888  # Jupyter
         expose:
-            - 8000
+            - 8000  # Django
         environment:
             - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
         volumes:
