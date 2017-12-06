@@ -1,51 +1,49 @@
 version: '2.1'
 
 services:
+  parkour-web:
+    restart: always
+    image: dockerparkour_parkour-web:latest
+    container_name: parkour-web
+    build: ./web
+    ports:
+      - 8888:8888     # Jupyter
+    expose:
+      - 8000          # Django
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+    volumes:
+      - usr_src_app_media:/usr/src/app/media
+      - usr_src_app_staticfiles:/usr/src/app/staticfiles
+    links:
+      - parkour-postgres:postgres
+    command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
 
-    parkour-web:
-        restart: always
-        image: dockerparkour_parkour-web:latest
-        container_name: parkour-web
-        build: ./web
-        ports:
-            - 8888:8888  # Jupyter
-        expose:
-            - 8000  # Django
-        environment:
-            - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
-        volumes:
-            - usr_src_app_media:/usr/src/app/media
-            - usr_src_app_staticfiles:/usr/src/app/staticfiles
-        links:
-            - parkour-postgres:postgres
-        command: /usr/local/bin/gunicorn wui.wsgi:application -w 2 -b :8000
+  parkour-nginx:
+    restart: always
+    image: dockerparkour_parkour-nginx:latest
+    container_name: parkour-nginx
+    build: ./nginx
+    ports:
+      - 80:80         # expose ports - HOST:CONTAINER
+    volumes_from:
+      - parkour-web
+    links:
+      - parkour-web
 
-    parkour-nginx:
-        restart: always
-        image: dockerparkour_parkour-nginx:latest
-        container_name: parkour-nginx
-        build: ./nginx
-        ports:
-            - 80:80  # expose ports HOST:CONTAINER
-            - 443:443
-        volumes_from:
-            - parkour-web
-        links:
-            - parkour-web
-
-    parkour-postgres:
-        restart: always
-        image: postgres:9.5
-        container_name: parkour-postgres
-        ports:
-            - 5433:5432  # expose ports - HOST:CONTAINER
-        environment:
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
-        volumes:
-            - pgdata:/var/lib/postgresql/data/
+  parkour-postgres:
+    restart: always
+    image: postgres:9.5
+    container_name: parkour-postgres
+    ports:
+      - 5433:5432     # expose ports - HOST:CONTAINER
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
 
 volumes:
-    pgdata:
-    usr_src_app_media:
-    usr_src_app_staticfiles:
+  pgdata:
+  usr_src_app_media:
+  usr_src_app_staticfiles:
