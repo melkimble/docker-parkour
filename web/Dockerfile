@@ -1,6 +1,6 @@
 FROM python:latest
 
-RUN apt-get update && apt-get install -y nano bpython
+RUN apt-get update && apt-get install -y nano
 
 ENV TERM xterm
 
