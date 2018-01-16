@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  parkour-nginx:
+    build: ./nginx-prod
+    ports:
+      - 80:80
+      - 443:443

@@ -21,7 +21,10 @@ cp /etc/ssl/certs/parkour/parkour.pem nginx/parkour.pem
 Build the images and start the services:
 
 ```
-docker-compose up -d --build
+docker-compose \
+	-f docker-compose.yml \
+	-f docker-compose.prod.yml \
+	up -d --build
 ```
 
 ### Step 2
