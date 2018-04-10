@@ -12,11 +12,13 @@ git clone https://github.com/maxplanck-ie/docker-parkour.git
 cd docker-parkour
 ```
 
-Copy in the server's SSL certificate into `nginx/parkour.pem`:
+Copy in the server's SSL certificate into `nginx-prod/parkour.pem`:
 
 ```
-cp /etc/ssl/certs/parkour/parkour.pem nginx/parkour.pem
+cp /etc/ssl/certs/parkour/parkour.pem nginx-prod/parkour.pem
 ```
+
+Note that `parkour.pem` must contain both the public and the private key, so you may need to `cat public.crt private.key > nginx-prod/parkour.pem`.
 
 Build the images and start the services:
 
