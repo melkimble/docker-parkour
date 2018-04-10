@@ -4,6 +4,10 @@ Docker container for easy deployment of the [Parkour](https://github.com/maxplan
 
 ## Installation
 
+### Step 0
+
+Install [docker](https://docs.docker.com/install/) and [docker compose](https://docs.docker.com/compose/install/#install-compose).
+
 ### Step 1
 
 Clone this repository:
