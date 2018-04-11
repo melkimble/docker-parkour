@@ -49,9 +49,9 @@ docker-compose run parkour-web python manage.py createsuperuser
 
 ## Usage
 
-Open Parkour: ```http://localhost:8001/```
+Open Parkour: ```https://localhost```
 
-Manage Parkour (admin site): ```http://localhost:8001/admin/```
+Manage Parkour (admin site): ```https://localhost/admin/```
 
 ---
 
