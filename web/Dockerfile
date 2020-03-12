@@ -7,7 +7,7 @@ ENV TERM xterm
 WORKDIR /usr/src/app
 
 # Download app and install requirements
-RUN git clone https://github.com/melskimble/parkour.git .
+RUN git clone https://github.com/mkimble88/parkour.git .
 RUN pip install -r requirements/prod.txt
 
 # Django
