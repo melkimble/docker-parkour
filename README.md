@@ -1,6 +1,6 @@
 # Parkour Docker Image
 
-Docker container for easy deployment of the [Parkour](https://github.com/maxplanck-ie/parkour).
+Docker container for easy deployment of the [Parkour](https://github.com/mkimble88/parkour).
 
 ## Installation
 
