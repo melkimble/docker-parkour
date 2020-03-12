@@ -12,7 +12,7 @@ Install [docker](https://docs.docker.com/install/) and [docker compose](https://
 
 Clone this repository:
 ```
-git clone https://github.com/maxplanck-ie/docker-parkour.git
+git clone https://github.com/mkimble88/docker-parkour.git
 cd docker-parkour
 ```
 
