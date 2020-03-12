@@ -1,6 +1,6 @@
 # Parkour Docker Image
 
-Docker container for easy deployment of the [Parkour](https://github.com/mkimble88/parkour).
+Docker container for easy deployment of the [Parkour](https://github.com/melkimble/parkour).
 
 ## Installation
 
@@ -12,7 +12,7 @@ Install [docker](https://docs.docker.com/install/) and [docker compose](https://
 
 Clone this repository:
 ```
-git clone https://github.com/mkimble88/docker-parkour.git
+git clone https://github.com/melkimble/docker-parkour.git
 cd docker-parkour
 ```
 
